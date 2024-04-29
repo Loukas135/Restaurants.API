@@ -1,0 +1,52 @@
+@host = http://localhost
+@port = 5164
+@Restaurant.API_HostAddress = http://localhost:5164
+
+GET {{Restaurant.API_HostAddress}}/api/weatherforecast/weather
+Accept: application/json
+Guid: {{$guid}}
+LocalDate: {{$datetime iso8601}}
+ProjectUrl: {{$projectUrl}}
+RandomInt: {{$randomInt}}
+###
+GET {{Restaurant.API_HostAddress}}/api/weatherforecast/23/current?qnumber=20
+Accept: application/json
+###
+POST {{Restaurant.API_HostAddress}}/api/weatherforecast/postingroute
+Content-Type: application/json
+
+["Majd", "Louka"]
+###
+POST {{Restaurant.API_HostAddress}}/api/weatherforecast/generate?numberOfResults=2
+Content-Type: application/json
+
+{
+  "minimum": 3,
+  "maximum": 10
+}
+###
+
+GET {{Restaurant.API_HostAddress}}/api/restaurants
+
+###
+
+
+GET {{Restaurant.API_HostAddress}}/api/restaurants/3
+
+###
+
+POST {{Restaurant.API_HostAddress}}/api/restaurants
+Content-Type: application/json
+
+{
+  "Name": "Entercote",
+  "Description": "A very class restaurant with class customers and dishes",
+  "Category": "Classy",
+  "HasDelivery": false,
+  "ContactEmail": "Entercote@gmail.com",
+  "ContactPhone": "+963947777888",
+  "City": "Damascus",
+  "Street": "Al Mohafaza Square",
+  "PostalCode": "5DTY UD4"
+}
+###
