@@ -1,11 +1,16 @@
 ﻿using AutoMapper;
 
 namespace Restaurant.Application.Restaurants.Dtos;
+
+using Restaurant.Application.Restaurants.Commands.CreateRestaurantCommand;
+using Restaurant.Application.Restaurants.Commands.UpdateRestaurantCommand;
 using Restaurant.Domain.Entities;
 public class RestaurantsProfile : Profile
 {
     public RestaurantsProfile()
     {
+		CreateMap<UpdateRestaurantCommand, Restaurant>();
+
 		CreateMap<Restaurant, RestaurantDto>()
 			.ForMember(d => d.City, opt =>
 				opt.MapFrom(src => src.Address == null ? null : src.Address.City))
@@ -15,7 +20,7 @@ public class RestaurantsProfile : Profile
 				opt.MapFrom(src => src.Address == null ? null : src.Address.PostalCode))
 			.ForMember(d => d.Dishes, opt => opt.MapFrom(src => src.Dishes));
 
-		CreateMap<CreateRestaurantDto, Restaurant>()
+		CreateMap<CreateRestaurantCommand, Restaurant>()
 			.ForMember(d => d.Address, opt => opt.MapFrom(
 				src => new Address
 				{

@@ -7,8 +7,9 @@ public static class ServiceCollectionExtensions
 {
 	public static void AddApplicaiton(this IServiceCollection services)
 	{
-		services.AddScoped<IRestaurantsService, RestaurantsService>();
+		var applicationAssembly = typeof(ServiceCollectionExtensions).Assembly;
 
-		services.AddAutoMapper(typeof(ServiceCollectionExtensions).Assembly);
+		services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(applicationAssembly));
+		services.AddAutoMapper(applicationAssembly);
 	}
 }

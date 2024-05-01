@@ -31,7 +31,7 @@ GET {{Restaurant.API_HostAddress}}/api/restaurants
 ###
 
 
-GET {{Restaurant.API_HostAddress}}/api/restaurants/3
+GET {{Restaurant.API_HostAddress}}/api/restaurants/5
 
 ###
 
@@ -49,4 +49,17 @@ Content-Type: application/json
   "Street": "Al Mohafaza Square",
   "PostalCode": "5DTY UD4"
 }
+###
+
+PATCH {{Restaurant.API_HostAddress}}/api/restaurants/5
+Content-Type: application/json
+
+
+{
+  "name": "Tasty Test",
+  "description": "this is the tttt new tasty test the newest one",
+  "hasDelivery": false
+}
+
+
 ###
